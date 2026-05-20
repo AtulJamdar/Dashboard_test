@@ -119,6 +119,6 @@ export default function StageBar({ activeStage, setActiveStage }) {
         ))}
       </div>
 
-    </>
+    </> 
   );
 }

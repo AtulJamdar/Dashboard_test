@@ -1,99 +1,88 @@
-import { useState } from "react";
 import { NAV_ITEMS } from "../data/constants";
 
-export default function Sidebar() {
-  const [activeItem, setActiveItem] = useState("Sales");
-  const [isOpen, setIsOpen] = useState(false);
-
+export default function Sidebar({ sidebarOpen, setSidebarOpen }) {
   return (
     <>
-      {/* Hamburger button - only visible on mobile */}
+      {/* Hamburger button - visible on mobile */}
       <button
-        onClick={() => setIsOpen(!isOpen)}
+        className="hamburger"
+        onClick={() => setSidebarOpen(!sidebarOpen)}
         style={{
           display: "none",
           position: "fixed",
           top: 12,
           left: 12,
           zIndex: 1000,
-          background: "#1a2340",
-          color: "#fff",
+          background: "none",
           border: "none",
-          borderRadius: 6,
-          padding: "6px 10px",
-          fontSize: 18,
+          fontSize: 20,
           cursor: "pointer",
+          color: "#333",
+          padding: 0,
         }}
-        className="hamburger"
       >
         ☰
       </button>
 
-      {/* Overlay for mobile - closes sidebar when clicked */}
-      {isOpen && (
-        <div
-          onClick={() => setIsOpen(false)}
-          className="sidebar-overlay"
-          style={{
-            display: "none",
-            position: "fixed",
-            inset: 0,
-            background: "rgba(0,0,0,0.4)",
-            zIndex: 998,
-          }}
-        />
-      )}
-
       {/* Sidebar */}
       <div
-        className={`sidebar ${isOpen ? "sidebar-open" : ""}`}
+        className="sidebar"
         style={{
           width: 200,
           background: "#1a2340",
-          display: "flex",
-          flexDirection: "column",
-          padding: "16px 0",
-          flexShrink: 0,
           height: "100vh",
           overflowY: "auto",
+          display: "flex",
+          flexDirection: "column",
+          flexShrink: 0,
         }}
       >
         {/* Logo */}
-        <div style={{
-          color: "#fff",
-          fontWeight: 700,
-          fontSize: 16,
-          padding: "0 16px 20px",
-          letterSpacing: 1,
-          borderBottom: "1px solid #2d3f6b",
-          marginBottom: 8,
-        }}>
+        <div
+          style={{
+            padding: "20px 16px",
+            fontSize: 18,
+            fontWeight: 700,
+            color: "#fff",
+            borderBottom: "1px solid #2d3f6b",
+          }}
+        >
           INHPL
         </div>
 
         {/* Nav items */}
-        {NAV_ITEMS.map((item) => (
-          <div
-            key={item.label}
-            onClick={() => setActiveItem(item.label)}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 10,
-              padding: "10px 16px",
-              cursor: "pointer",
-              color: activeItem === item.label ? "#fff" : "#8fa3c0",
-              background: activeItem === item.label ? "#2d3f6b" : "transparent",
-              borderLeft: activeItem === item.label
-                ? "3px solid #4a90d9"
-                : "3px solid transparent",
-              transition: "all 0.2s",
-            }}
-          >
-            <span style={{ fontSize: 15 }}>{item.icon}</span>
-            <span style={{ fontSize: 12.5 }}>{item.label}</span>
-          </div>
-        ))}
+        <nav style={{ flex: 1 }}>
+          {NAV_ITEMS.map((item) => (
+            <div
+              key={item.label}
+              style={{
+                padding: "12px 16px",
+                display: "flex",
+                alignItems: "center",
+                gap: 12,
+                cursor: "pointer",
+                background: item.active ? "#2d3f6b" : "transparent",
+                color: item.active ? "#fff" : "#8fa3c0",
+                borderLeft: item.active ? "3px solid #4a90d9" : "3px solid transparent",
+                fontSize: 13,
+                transition: "all 0.2s",
+              }}
+              onMouseEnter={(e) => {
+                if (!item.active) {
+                  e.currentTarget.style.background = "#252f4a";
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (!item.active) {
+                  e.currentTarget.style.background = "transparent";
+                }
+              }}
+            >
+              <span style={{ fontSize: 16 }}>{item.icon}</span>
+              <span>{item.label}</span>
+            </div>
+          ))}
+        </nav>
       </div>
     </>
   );

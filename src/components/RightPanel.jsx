@@ -181,6 +181,7 @@ function InlineField({ label, value, onChange, type, icon, fullWidth }) {
   return (
     <div style={{
       flex: fullWidth ? "1 1 100%" : 1,
+      minWidth: 0,
       display: "flex",
       flexDirection: "column",
       gap: 3,
@@ -195,6 +196,8 @@ function InlineField({ label, value, onChange, type, icon, fullWidth }) {
         borderRadius: 6,
         overflow: "hidden",
         background: "#fff",
+        width: "100%",
+        boxSizing: "border-box",
       }}>
         <input
           type={type}
@@ -202,11 +205,14 @@ function InlineField({ label, value, onChange, type, icon, fullWidth }) {
           onChange={(e) => onChange(e.target.value)}
           style={{
             flex: 1,
+            minWidth: 0,
             border: "none",
             padding: "5px 8px",
             fontSize: 12,
             outline: "none",
             background: "transparent",
+            width: "100%",
+            boxSizing: "border-box",
           }}
           onFocus={(e) => (e.target.parentElement.style.borderColor = "#4a90d9")}
           onBlur={(e) => (e.target.parentElement.style.borderColor = "#ddd")}
@@ -217,6 +223,7 @@ function InlineField({ label, value, onChange, type, icon, fullWidth }) {
           fontSize: 12,
           borderLeft: "1px solid #eee",
           cursor: "pointer",
+          flexShrink: 0,
         }}>
           {icon}
         </span>

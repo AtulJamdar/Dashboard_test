@@ -1,10 +1,10 @@
-export default function TopBar() {
+export default function TopBar({ sidebarOpen, setSidebarOpen }) {
   return (
     <div
       className="topbar"
       style={{
         background: "#fff",
-        padding: "10px 20px",
+        padding: "12px 20px",
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
@@ -25,23 +25,23 @@ export default function TopBar() {
       </span>
 
       {/* Right icons */}
-      <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+      <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
         {/* Settings */}
-        <div style={iconStyle}>⚙</div>
+        <span style={{ fontSize: 18, cursor: "pointer" }}>⚙</span>
 
         {/* Notifications */}
-        <div style={{ position: "relative" }}>
-          <div style={iconStyle}>🔔</div>
+        <div style={{ position: "relative", display: "inline-block" }}>
+          <span style={{ fontSize: 18, cursor: "pointer" }}>🔔</span>
           <span style={{
             position: "absolute",
-            top: -3,
-            right: -3,
+            top: -8,
+            right: -8,
             background: "#e05c2b",
             color: "#fff",
             borderRadius: "50%",
-            width: 14,
-            height: 14,
-            fontSize: 9,
+            width: 20,
+            height: 20,
+            fontSize: 10,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -69,15 +69,3 @@ export default function TopBar() {
     </div>
   );
 }
-
-const iconStyle = {
-  width: 32,
-  height: 32,
-  borderRadius: "50%",
-  background: "#f0f2f5",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  cursor: "pointer",
-  fontSize: 15,
-};
