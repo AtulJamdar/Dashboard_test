@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Responsive sidebar */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block !important;
+  }
+
+  .sidebar-overlay {
+    display: block !important;
+  }
+
+  .sidebar {
+    position: fixed !important;
+    left: -200px !important;
+    top: 0 !important;
+    z-index: 999 !important;
+    transition: left 0.3s ease !important;
+  }
+
+  .sidebar-open {
+    left: 0 !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .topbar {
+    padding: 10px 12px 10px 56px !important;
+  }
+
+  .topbar-title {
+    font-size: 13px !important;
+  }
+}
+
+
+/* Chevron scrollable on small screens */
+@media (max-width: 768px) {
+  .chevron-pipeline {
+    gap: 0;
+  }
+
+  .chevron-pipeline > div {
+    min-width: 85px !important;
+    font-size: 10px !important;
+    padding: 8px 4px 8px 14px !important;
+  }
+}
+
+/* InfoBar wraps nicely on small screens */
+@media (max-width: 768px) {
+  .infobar-grid {
+    gap: 6px 12px !important;
+    font-size: 11px !important;
+  }
+}
+
+
+/* Action buttons stack on mobile */
+@media (max-width: 480px) {
+  .action-buttons-grid {
+    gap: 6px !important;
+  }
+
+  .action-buttons-grid button {
+    flex: 1 1 calc(50% - 6px) !important;
+    text-align: center !important;
+  }
+}
+
+
+/* Table footer stacks on mobile */
+@media (max-width: 600px) {
+  .table-footer {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+}
+
+
+/* Right panel goes full width on mobile */
+@media (max-width: 900px) {
+  .right-panel {
+    width: 100% !important;
+  }
+}
+
+/* Main content + right panel stack on tablet */
+@media (max-width: 900px) {
+  .content-area {
+    flex-direction: column !important;
+    overflow-y: auto !important;
+  }
+
+  .right-panel {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .left-column {
+    width: 100% !important;
+  }
+}
+
+/* Tighten padding on small screens */
+@media (max-width: 600px) {
+  .content-area {
+    padding: 10px !important;
+  }
+
+  .infobar-grid {
+    font-size: 11px !important;
+  }
+
+  .infobar-grid span {
+    white-space: normal !important;
+  }
+}
